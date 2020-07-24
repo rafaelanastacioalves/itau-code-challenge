@@ -1,6 +1,8 @@
 package com.example.itaucodechallenge.code.ui.prlisting
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,7 @@ import com.example.itaucodechallenge.code.domain.entities.Pull
 import com.example.itaucodechallenge.code.domain.entities.Resource
 import com.example.itaucodechallenge.code.listeners.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.fragment_pull_requests.*
+import java.util.*
 
 
 /**
@@ -48,9 +51,15 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
         mPullRequestListingViewModel = ViewModelProvider.NewInstanceFactory().create(PullRequestListingViewModel::class.java)
         mPullRequestListingViewModel.loadData(creator, repository).observe(this, Observer { entityDetails ->
             when (entityDetails.status) {
-                Resource.Status.SUCCESS -> {
-                    hideLoading()
-                    setViewsWith(entityDetails?.data)
+                Resource.Status.SUCCESS  -> {
+                    if ( entityDetails.data.isNullOrEmpty()){
+                        hideLoading()
+                        showError()
+                    }else{
+                        hideLoading()
+                        setViewsWith(entityDetails?.data)
+                    }
+
                 }
                 Resource.Status.INTERNAL_SERVER_ERROR -> {
                     hideLoading()
@@ -63,6 +72,10 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
                 Resource.Status.LOADING -> {
                     hideMainView()
                     showLoading()
+                }
+                else -> {
+                    hideLoading()
+                    showError()
                 }
             }
         })
@@ -91,7 +104,6 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
     }
 
     private fun setViewsWith(entityDetails: List<Pull>?) {
-        Toast.makeText(activity, "LOADED_SUCCESSFULLY", Toast.LENGTH_SHORT).show()
         pulls_list_recycler_view.visibility = View.VISIBLE
         entityDetails?.let { mPullsListAdapter.setItems(it) }
     }
@@ -106,8 +118,9 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
     }
 
     override fun onClick(v: View, position: Int) {
-        Toast.makeText(activity, "Comprado!", Toast.LENGTH_SHORT).show()
-    }
+        val aPull: Pull = mPullsListAdapter.currentList.get(position) as Pull
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(aPull.pullUrl))
+        startActivity(browserIntent)    }
     private fun hideMainView() {
         pulls_list_recycler_view.visibility = View.GONE
     }
