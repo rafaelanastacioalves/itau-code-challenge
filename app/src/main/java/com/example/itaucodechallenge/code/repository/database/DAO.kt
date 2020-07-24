@@ -9,7 +9,7 @@ import com.example.itaucodechallenge.code.domain.entities.Repository
 @Dao
 interface DAO {
 
-    @Query("SELECT * FROM repository WHERE page = :page")
+    @Query("SELECT * FROM repository WHERE page = :page ORDER BY stargazers_count DESC")
     suspend fun getRepositoryList(page : String): List<Repository>
 
     @Insert
