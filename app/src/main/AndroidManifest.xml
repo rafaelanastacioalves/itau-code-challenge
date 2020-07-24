@@ -5,14 +5,27 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application
 		tools:replace="android:label"
-		android:name="com.example.itaucodechallenge.code.application.MainApplication"
+		android:name="com.example.itaucodechallenge.code.application.RepositoriesApplication"
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		
+		<activity android:name="com.example.itaucodechallenge.code.ui.repositorieslisting.RepositoryListingActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.example.itaucodechallenge.code.ui.prlisting.PullRequestsListingActivity"
+			android:parentActivityName="com.example.itaucodechallenge.code.ui.repositorieslisting.RepositoryListingActivity"
+			android:theme="@style/AppTheme.NoActionBar">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.example.itaucodechallenge.code.ui.repositorieslisting.RepositoryListingActivity" />
+		</activity>
 	</application>
 
 </manifest>

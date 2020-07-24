@@ -1,0 +1,7 @@
+<resources>
+	<string name="app_name">Github JavaPop</string>
+	<string name="fake_description_text">This is the best repository ever. This is the best repository ever. This is the best repository ever.</string>
+	<string name="small_text">Small Text......Small Text......Small Text......Small Text......Small Text......Small Text......</string>
+	<string name="no_pull_requests">Nenhum pull request para exibir ou Erro</string>
+	<string name="blank_value">-</string>
+</resources>

@@ -81,7 +81,16 @@ dependencies {
     implementation "android.arch.paging:runtime:$pagingVersion"
 
 
+    //http + retrofit + gson
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitExt"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitExt"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3Ext"
+    implementation "com.squareup.okhttp3:mockwebserver:$mockWebServerExt"
 
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinVersionCore"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinVersionCore"
 
 
 
