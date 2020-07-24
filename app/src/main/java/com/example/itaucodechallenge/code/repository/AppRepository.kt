@@ -37,5 +37,19 @@ object AppRepository {
         }.fromHttpAndDB()
     }
 
+    suspend fun entityDetails(creator: String, repository: String): Resource<List<Pull>> {
+        return object : NetworkBoundResource<List<Pull>, List<Pull>>() {
+            override suspend fun makeCall(): List<Pull>? {
+                return apiClient.getEntityDetails(creator, repository)
+            }
 
+            override suspend fun getFromDB(): List<Pull>? {
+                TODO("Not yet implemented")
+            }
+
+            override suspend fun saveIntoDB(resultData: List<Pull>?) {
+                TODO("Not yet implemented")
+            }
+        }.fromHttpOnly()
+    }
 }

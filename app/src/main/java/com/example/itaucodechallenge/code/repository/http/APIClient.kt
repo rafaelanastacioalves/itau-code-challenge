@@ -16,5 +16,7 @@ interface APIClient {
             @Query("sort") sort: String
     ) : RepositoryAnswer
 
-
+    @GET("/repos/{creator}/{repository}/pulls")
+    suspend fun getEntityDetails(@Path("creator") creator: String,
+                                 @Path("repository") repository: String): List<Pull>
 }
