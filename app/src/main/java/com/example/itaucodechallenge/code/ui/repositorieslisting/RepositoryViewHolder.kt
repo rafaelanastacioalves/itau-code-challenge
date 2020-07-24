@@ -32,15 +32,22 @@ class RepositoryViewHolder(override val containerView: View) : RecyclerView.View
     fun bind(repository: Repository, context: Context) {
 
         repo_text_view_title.setText(repository.name)
+        repo_text_view_title.contentDescription = context.getString(R.string.repository_title_content_description, repository.name)
         repo_text_view_title.setTag(repository)
 
         repo_text_view_description.setText(repository.description)
+        repo_text_view_description.contentDescription = context.getString(R.string.repository_description_content_description, repository.description)
+
 
         repo_textview_number_forks.setText(Integer.toString(repository.forks))
+        repo_textview_number_forks.contentDescription = context.getString(R.string.repository_forks_content_description, repository.forks)
 
         repo_textview_number_stars.setText(Integer.toString(repository.stargazersCount))
+        repo_textview_number_stars.contentDescription = context.getString(R.string.repository_star_count_content_description, repository.stargazersCount)
+
 
         repo_textview_owner_name.setText(repository.owner.login)
+        repo_textview_owner_name.contentDescription = context.getString(R.string.repository_owner_user_content_description, repository.owner.login)
 
         Picasso.get()
                 .load(repository.owner.avatarUrl)
@@ -49,10 +56,8 @@ class RepositoryViewHolder(override val containerView: View) : RecyclerView.View
                 .transform(CircleImageTransformation())
                 .placeholder(R.drawable.placeholder_user)
                 .into(repo_owner_photo)
-        repo_owner_photo.setContentDescription(repository.name)
 
 
         containerView.setTag(repository)
-        containerView.setContentDescription(repository.name)
     }
 }

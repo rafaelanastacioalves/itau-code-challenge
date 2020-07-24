@@ -18,11 +18,15 @@ class PullViewHolder(override val containerView: View, private val aRecyclerView
 
 
     fun bind(aPull: Pull) {
+        val context = containerView.context
         pull_text_view_description.setText(aPull.body)
-        pull_container.setContentDescription("Pull Request number " + (getAdapterPosition() + 1))
+        pull_text_view_description.contentDescription = context.getString(R.string.pullrequest_description_content_description, pull_text_view_description.text.substring(
+                pull_text_view_description.layout.getLineEnd(pull_text_view_description.getLineCount() - 1)
+        ))
         pull_textview_title.setText(aPull.title)
+        pull_textview_title.contentDescription = context.getString(R.string.pullrequest_description_content_description,aPull.title)
         pull_textview_owner_username.setText(aPull.user.login)
-        pull_textview_owner_username.setHint(aPull.user.login + getAdapterPosition())
+        pull_textview_owner_username.contentDescription = context.getString(R.string.pullrequest_description_content_description, aPull.user.login)
         Picasso.get()
                 .load(aPull.user.avatarUrl)
                 .resize(150, 150)

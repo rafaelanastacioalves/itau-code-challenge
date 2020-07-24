@@ -116,6 +116,7 @@
 		android:layout_height="50dp"
 		android:layout_marginTop="@dimen/default_margin"
 		android:src="@drawable/placeholder_user"
+		android:contentDescription="@string/repository_owner_photo_content_description"
 		app:layout_constraintBottom_toTopOf="@+id/repo_textview_owner_name"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="@+id/guideline"

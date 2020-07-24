@@ -4,4 +4,12 @@
 	<string name="small_text">Small Text......Small Text......Small Text......Small Text......Small Text......Small Text......</string>
 	<string name="no_pull_requests">Nenhum pull request para exibir ou Erro</string>
 	<string name="blank_value">-</string>
+    <string name="repository_title_content_description">Título do Repositório: %s</string>
+	<string name="repository_description_content_description">Descrição do repositório: %s</string>
+	<string name="repository_forks_content_description">Número de Forks: %d</string>
+	<string name="repository_star_count_content_description">Número de Starts: %d</string>
+	<string name="repository_owner_user_content_description">Nome do usuário owner: %s</string>
+	<string name="repository_owner_photo_content_description">Foto do usuário owner: </string>
+	<string name="pullrequest_description_content_description">Descrição do pull request: %s</string>
+	<string name="pull_request_user_photo">Foto do usuário do pull request: </string>
 </resources>
