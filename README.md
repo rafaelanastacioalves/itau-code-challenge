@@ -2,8 +2,7 @@
 
 Desafio tecnico da empresa Itau.
 
-![tela de listagem](captures/Screenshot_1595579604.png)
-![tela de listagem](captures/Screenshot_1595580050.png)
+![tela de listagem](captures/Screenshot_1595579604.png)     ![tela de listagem](captures/Screenshot_1595580050.png)
 
 ## Descrição técnica
 
@@ -40,4 +39,5 @@ Para teste de acessibilidade, utilizar o recurso de Talkback de um dispositivo A
 ## Itens não realizados
 
 - Injeção de dependência
+- Fim de scroll infinito (condição de parada) 
  
