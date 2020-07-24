@@ -10,10 +10,10 @@ data class Owner(
 
         @PrimaryKey
         @ColumnInfo(name = "owner_id")
-        var id : Int,
+        val id : Int,
         @ColumnInfo(name = "login")
-        var login : String,
+        val login : String,
         @ColumnInfo(name = "avatar_url") @SerializedName("avatar_url")
-        var avatarUrl : String
+        val avatarUrl : String
 
 )

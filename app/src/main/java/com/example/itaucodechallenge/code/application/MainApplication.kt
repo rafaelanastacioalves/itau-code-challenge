@@ -16,9 +16,5 @@ class RepositoriesApplication : Application() {
     private fun setupDB() {
         AppDataBase.setupAtApplicationStartup(this)
     }
-
-    /**
-     * A tree which logs important information for crash reporting.
-     */
-
+    
 }

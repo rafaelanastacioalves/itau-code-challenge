@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
  data class Repository(
-        @PrimaryKey var id: Int,
+        @PrimaryKey val id: Int,
         @ColumnInfo(name = "page") var page: String,
-        @ColumnInfo(name = "name") var name: String,
+        @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "description") val description: String,
         @ColumnInfo(name = "forks") val forks: Int,
         @ColumnInfo(name = "stargazers_count")
         @SerializedName("stargazers_count") val stargazersCount: Int,
-        @Embedded var owner: Owner
+        @Embedded val owner: Owner
 
         )
 

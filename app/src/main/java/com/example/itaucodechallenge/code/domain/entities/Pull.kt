@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Pull(
 
-        var creator: String,
+        val creator: String,
         val repoName: String,
         val id: Int,
         val order: Int,

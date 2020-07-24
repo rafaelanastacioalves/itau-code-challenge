@@ -1,9 +1,9 @@
 package com.example.itaucodechallenge.code.domain.entities
 
 class Resource<T> constructor(
-        var status: Status,
+        val status: Status,
         val data: T?,
-        var message: String?) {
+        val message: String?) {
 
     companion object Factory {
 

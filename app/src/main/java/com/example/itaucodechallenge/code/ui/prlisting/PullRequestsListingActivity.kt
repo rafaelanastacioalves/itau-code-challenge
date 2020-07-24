@@ -15,8 +15,6 @@ class PullRequestsListingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pull_requests)
         setupActionBar()
-
-
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
@@ -25,23 +23,16 @@ class PullRequestsListingActivity : AppCompatActivity() {
                     intent.getStringExtra(PullRequestsListingFragment.ARG_CREATOR))
             arguments.putString(PullRequestsListingFragment.ARG_REPOSITORY,
                     intent.getStringExtra(PullRequestsListingFragment.ARG_REPOSITORY))
-
-
             val fragment = PullRequestsListingFragment()
             fragment.arguments = arguments
             supportFragmentManager.beginTransaction()
                     .add(R.id.entity_detail_fragment_container, fragment)
                     .commit()
-
-
-            supportPostponeEnterTransition()
         }
     }
 
     private fun setupActionBar() {
         val toolbar = findViewById<View>(R.id.detail_toolbar) as Toolbar
         setSupportActionBar(toolbar)
-
     }
-
 }

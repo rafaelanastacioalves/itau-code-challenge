@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,18 +18,14 @@ import com.example.itaucodechallenge.code.domain.entities.Pull
 import com.example.itaucodechallenge.code.domain.entities.Resource
 import com.example.itaucodechallenge.code.listeners.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.fragment_pull_requests.*
-import java.util.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
     companion object {
 
         val ARG_CREATOR: String? = "ARG_CREATOR"
         var ARG_REPOSITORY: String? = "ARG_REPOSITORY"
     }
+
     lateinit private var mPullRequestListingViewModel: PullRequestListingViewModel
     lateinit var repository: String
     lateinit var creator: String
@@ -51,11 +46,11 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
         mPullRequestListingViewModel = ViewModelProvider.NewInstanceFactory().create(PullRequestListingViewModel::class.java)
         mPullRequestListingViewModel.loadData(creator, repository).observe(this, Observer { entityDetails ->
             when (entityDetails.status) {
-                Resource.Status.SUCCESS  -> {
-                    if ( entityDetails.data.isNullOrEmpty()){
+                Resource.Status.SUCCESS -> {
+                    if (entityDetails.data.isNullOrEmpty()) {
                         hideLoading()
                         showError()
-                    }else{
+                    } else {
                         hideLoading()
                         setViewsWith(entityDetails?.data)
                     }
@@ -79,7 +74,6 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
                 }
             }
         })
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -120,7 +114,9 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
     override fun onClick(v: View, position: Int) {
         val aPull: Pull = mPullsListAdapter.currentList.get(position) as Pull
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(aPull.pullUrl))
-        startActivity(browserIntent)    }
+        startActivity(browserIntent)
+    }
+
     private fun hideMainView() {
         pulls_list_recycler_view.visibility = View.GONE
     }
@@ -133,10 +129,8 @@ class PullRequestsListingFragment : Fragment(), RecyclerViewClickListener {
         progressBar.visibility = View.GONE
     }
 
-
     private fun showLoading() {
         progressBar.setVisibility(View.VISIBLE)
     }
 
-
-}// Required empty public constructor
+}

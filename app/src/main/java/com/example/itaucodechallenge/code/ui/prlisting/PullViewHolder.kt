@@ -16,7 +16,6 @@ class PullViewHolder(override val containerView: View, private val aRecyclerView
         containerView.setOnClickListener(this)
     }
 
-
     fun bind(aPull: Pull) {
         val context = containerView.context
         pull_text_view_description.setText(aPull.body)
