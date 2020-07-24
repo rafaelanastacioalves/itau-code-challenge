@@ -39,12 +39,38 @@ class RepositoryListingActivity : AppCompatActivity(), RecyclerViewClickListener
     }
 
     private fun subscribe() {
-        mLiveDataRepositoryListViewModel.repositoryListLiveData.observeForever(Observer { mainEntities ->
-            populateRecyclerView(mainEntities)
+        mLiveDataRepositoryListViewModel.repositoryListLiveData.observeForever(Observer { repositories ->
+            populateRecyclerView(repositories)
         })
     }
 
-  
+    private fun setupRecyclerView() {
+        mRecyclerView = findViewById<View>(R.id.repository_list) as RecyclerView
+        val layoutManager = LinearLayoutManager(applicationContext)
+        mRecyclerView!!.layoutManager = layoutManager
+        if (repositoryAdapter == null) {
+            repositoryAdapter = RepositoryAdapter(this)
+        }
+        repositoryAdapter!!.setRecyclerViewClickListener(mClickListener)
+        mRecyclerView!!.adapter = repositoryAdapter
+    }
+
+
+    private fun populateRecyclerView(list: PagedList<Repository?>) {
+        repositoryAdapter?.submitList(list)
+    }
+
+    private fun showLoadError() {
+        Toast.makeText(this, "Erro de Carregamento", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onClick(view: View, position: Int) {
+        val repository = repositoryAdapter?.currentList?.get(position)
+
+        val i = Intent(this, PullRequestsListingActivity::class.java)
+        i.putExtra(PullRequestsListingFragment.ARG_CREATOR, repository?.owner?.login)
+        i.putExtra(PullRequestsListingFragment.ARG_REPOSITORY, repository?.name)
+        startActivity(i)
 
     }
 
