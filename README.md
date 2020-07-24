@@ -31,8 +31,8 @@ Para a paginação, utilizou-se um conjunto de soluções do Android Architectur
 ## Testes
 
 Os testes utilizam o buildtype ```instrumentation``` para funcionar, pois forçamos que o app seja buildado para apontar para localhost durante os testes.
-Para testes unitários: usar o comando ```./gradlew testDebugUnitTest```
-Para testes instrumentados (unitários e de UI): usar o comando ``` ./gradlew connectedInstrumentationAndroidTest```
+- Para testes unitários: usar o comando ```./gradlew testDebugUnitTest```
+- Para testes instrumentados (unitários e de UI): usar o comando ``` ./gradlew connectedInstrumentationAndroidTest```
 
 ## Acessibilidade
 
